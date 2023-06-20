@@ -70,6 +70,9 @@ function _updateSidebar( current ) {
   thisRing.dataset.hash = current;
   thisRing.href = c_site.url;
   thisRing.innerHTML = c_site.name;
+  author.innerHTML = c_site.owner;
+  desc.innerHTML = c_site.theme;
+  systems.innerHTML = c_site.rpgsystem;
 }
 
 function _handleError( error ) {
@@ -112,6 +115,12 @@ let p_site, c_site, n_site;
 let prevRing = document.querySelector("#prev");
 let thisRing = document.querySelector("#curr");
 let nextRing = document.querySelector("#next");
+
+let author = document.querySelector("#author");
+let desc   = document.querySelector("#desc");
+let systems = document.querySelector("#systems");
+
+
 
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach(function(currentBtn){
