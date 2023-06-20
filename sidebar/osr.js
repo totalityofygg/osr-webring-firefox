@@ -7,21 +7,16 @@ function _clear() {
     browser.storage.local.clear();
 }
 
-function _init( sites ) {
+async function _init( sites ) {
     // load sites if missing
     if( _tojson( sites ) === '{}' ) {
         console.log( 'Reload the webring' );
-        //@todo ajax
-        let webring = [
-            {"name":"The Totality of Ygg", "url":"https://thetotalityofygg.blogspot.com"},
-            {"name":"The Totality of Ygg2","url":"https://totalityofygg.com" },
-            {"name":"Goblin Punch", "url":"https://goblinpunch.blogspot.com/" }
-        ];
-
-        // these will be md5 hashes
-        let hashes = [ "123", "456",  "789" ];
-        let current = "456";
-    
+        const json_hashes = await fetch( hashURI );
+        const json_webring = await fetch( webrURI );
+        
+        let hashes = await json_hashes.json();
+        let webring = await json_webring.json();
+        let current = -1;
         browser.storage.local.set({ webring, hashes, current });
         console.log( 'Webring reloaded' );
         // overload
@@ -63,14 +58,18 @@ function _updateRing( current ) {
 }
 
 function _updateSidebar( current ) {
-    prevRing.dataset.url = p_site.url;
-    thisRing.href = c_site.url;
-    thisRing.innerHTML = c_site.name;
-    nextRing.dataset.url = n_site.url;
-
-    prevRing.dataset.hash = hashes[prev];
-    thisRing.dataset.hash = current;
-    nextRing.dataset.hash = hashes[next];
+  //Previous
+  prevRing.dataset.url = p_site.url;
+  prevRing.dataset.hash = hashes[prev];
+  
+  //Next
+  nextRing.dataset.url = n_site.url;
+  nextRing.dataset.hash = hashes[next];
+  
+  // Current
+  thisRing.dataset.hash = current;
+  thisRing.href = c_site.url;
+  thisRing.innerHTML = c_site.name;
 }
 
 function _handleError( error ) {
@@ -103,6 +102,10 @@ function _handleClick() {
 }
 
 const extURI = browser.runtime.getURL("");
+const hashURI = "https://raw.githubusercontent.com/totalityofygg/osr-webring-firefox/main/hashes.json";
+const webrURI = "https://raw.githubusercontent.com/totalityofygg/osr-webring-firefox/main/webring.json";
+
+
 var sites, hashes, webring;
 
 let p_site, c_site, n_site;
