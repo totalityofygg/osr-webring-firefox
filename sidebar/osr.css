@@ -1,0 +1,71 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 90%;
+  margin-top: 10%;
+  font: caption;
+  background-color: #F4F7F8;
+}
+
+p {
+  margin: 1em 2em;
+}
+
+.w3-button {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.action-button {
+  margin-top: 5px;
+  height: 20px;
+  border: none;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 4px;
+  background-color: #0060DF;
+  padding: 4px 16px;
+  color: #FBFBFE;
+}
+
+
+.current_ring { border: 1px solid black; min-height:25%; text-align:center; vertical-align:middle; background-color:  #054096; color: white;}
+.centercol { width: 70%; padding-top:50%; vertical-align: middle;}
+.leftcol { 
+    float: left;
+    width: 15%;
+    vertical-align: center;
+    padding: 25% 0 25% 0;
+    background-color: #52525e;
+}
+.rightcol { 
+    float: right;
+    width: 15%;
+    vertical-align: center;
+    padding: 25% 0 25% 0;
+    background-color: #52525e;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:focus,
+a:active {
+  color: white;
+}
