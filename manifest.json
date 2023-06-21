@@ -14,13 +14,16 @@
   "description" : "OSR Webring",
 
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/osr-48.png"
   },
 
   "sidebar_action": {
     "default_title": "The OSR Webring",
     "default_panel": "sidebar/osr.html",
-    "open_at_install" : true
+    "open_at_install" : true,
+    "default_icon" : {
+      "48": "icons/osr-48.png"
+    }
   },
 
   "permissions": ["storage", "tabs"]
