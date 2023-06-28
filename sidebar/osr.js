@@ -20,7 +20,7 @@ async function _init( sites ) {
         let hashes = await json_hashes.json();
         let webring = await json_webring.json();
         let ts = await json_ts.json();
-        let current = -1;
+        let current = "c85fda9e4c95d8f3326e84d23d998684";
 
         browser.storage.local.set({ webring, hashes, current, ts });
         console.log( 'Webring reloaded' );
@@ -77,13 +77,14 @@ function _updateSidebar( current ) {
   // Current
   thisRing.dataset.hash = current;
   thisRing.href = c_site.url + '?utm_source=osr-webring';
-  thisRing.innerHTML = c_site.name;
-  author.innerHTML = c_site.owner;
-  desc.innerHTML = c_site.theme;
-  systems.innerHTML = c_site.rpgsystem;
+
+  thisRing.textContent = c_site.name;
+  author.textContent = c_site.owner;
+  desc.textContent = c_site.theme;
+  systems.textContent = c_site.rpgsystem;
 
   // timestamp
-  update.innerHTML = "Last update: " + last_update["dte"];
+  update.textContent = "Last update: " + last_update["dte"];
   
 }
 
