@@ -2,12 +2,12 @@
 
   "manifest_version": 2,
   "name": "The OSR Webring",
-  "version": "1.0",
+  "version": "1.0.3",
 
   "browser_specific_settings": {
     "gecko": {
       "id": "@totalityofygg.com",
-      "strict_min_version" : "54.0a1"
+      "strict_min_version" : "62.0"
     }
   },
 
